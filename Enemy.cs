@@ -27,10 +27,10 @@ public class Enemy : MonoBehaviour
         if (!GameManager.instance.GameStart) return;
 
         if(agent != null)
-        agent.SetDestination(ClosetObjectPos());
+        agent.SetDestination(FindClosetObjectPos());
     }
 
-    Vector3 ClosetObjectPos()
+    Vector3 FindClosetObjectPos()
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, vision_radius, TargetMask);
 
