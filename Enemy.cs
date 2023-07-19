@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -9,19 +7,19 @@ public class Enemy : MonoBehaviour
     NavMeshAgent agent;
     [SerializeField] float vision_radius;
     [SerializeField] LayerMask TargetMask;
-    
+
     // Start is called before the first frame update
     void Start() => agent = GetComponent<NavMeshAgent>();
 
     // Update is called once per frame
     void Update() => Patroll();
-    
+
     void Patroll()
     {
         if (!GameManager.instance.GameStart) return;
 
-        if(agent != null)
-        agent.SetDestination(FindClosetObjectPos());
+        if (agent != null)
+            agent.SetDestination(FindClosetObjectPos());
     }
 
     Vector3 FindClosetObjectPos()
@@ -30,12 +28,12 @@ public class Enemy : MonoBehaviour
 
         List<ObjectInVisionList> objectInVisionList = new List<ObjectInVisionList>();
 
-        if(colliders.Length > 0)
+        if (colliders.Length > 0)
         {
-            for(int i = 0; i < colliders.Length; i++) 
+            for (int i = 0; i < colliders.Length; i++)
             {
                 if (colliders[i].GetComponent<item>().itemStatus == item.ItemStatus.None)
-                objectInVisionList.Add(new ObjectInVisionList(Vector3.Distance(transform.position, colliders[i].transform.position), colliders[i].gameObject));
+                    objectInVisionList.Add(new ObjectInVisionList(Vector3.Distance(transform.position, colliders[i].transform.position), colliders[i].gameObject));
             }
         }
 
@@ -46,19 +44,16 @@ public class Enemy : MonoBehaviour
     {
         for (int i = 0; i < objectInVisionList.Count; i++)
         {
-            float temp = objectInVisionList[i].distance;
-            GameObject gameObject = objectInVisionList[i].Object;
+            ObjectInVisionList objectInVision = new ObjectInVisionList(objectInVisionList[i].distance, objectInVisionList[i].Object);
 
             int j;
 
-            for(j = i - 1; j >= 0 && objectInVisionList[i].distance > temp; j--)
+            for (j = i - 1; j >= 0 && objectInVisionList[i].distance > objectInVision.distance; j--)
             {
-                objectInVisionList[j + 1].distance = objectInVisionList[j].distance;
-                objectInVisionList[j + 1].Object = objectInVisionList[j].Object;
+                objectInVisionList[j + 1] = objectInVisionList[j];
             }
 
-            objectInVisionList[j + 1].distance = temp;
-            objectInVisionList[j + 1].Object = gameObject;
+            objectInVisionList[j + 1] = objectInVision;
         }
 
         Vector3 pos = (objectInVisionList.Count > 0) ? objectInVisionList[0].Object.transform.position : transform.position;
@@ -83,7 +78,7 @@ public class ObjectInVisionList
 {
     public float distance;
     public GameObject Object;
-    public ObjectInVisionList(float distance , GameObject gameObject)
+    public ObjectInVisionList(float distance, GameObject gameObject)
     {
         this.distance = distance;
         this.Object = gameObject;
