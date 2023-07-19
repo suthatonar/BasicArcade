@@ -16,28 +16,18 @@ public class ItemSpawner : MonoBehaviour
 
     public static ItemSpawner Instance;
 
-    private void Start()
-    {
-        Instance = this;
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        Spawner();
-    }
+    private void Start() => Instance = this;
 
-    public void RemoveItem(GameObject item)
-    {
-        itemList.Remove(item);
-    }
+    // Update is called once per frame
+    void Update() => Spawner();
+
+    public void RemoveItem(GameObject item) => itemList.Remove(item);
 
     public void RemoveAll()
     {
         foreach (GameObject item in itemList)
-        {
             itemList.Remove(item);
-        }
-        
+            
         itemList.Clear();
     }
 
