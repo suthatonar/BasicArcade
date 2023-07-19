@@ -30,6 +30,7 @@ public class Bucket : MonoBehaviour
             if (formulaCurrent[i] != MainFomula[i])
             {
                 complete = false;
+                break;
             }
         }
 
