@@ -6,8 +6,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    [Header("Score")]
-    [SerializeField] float Score;
+    private float Score;
 
     [Header("Settings")]
     [SerializeField] float TimeSet;
