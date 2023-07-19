@@ -7,10 +7,7 @@ public class Drag : MonoBehaviour
     private Vector3 startposition;
     private float zCoord;
 
-    private void Start()
-    {
-        item = GetComponent<item>();
-    }
+    private void Start() => item = GetComponent<item>();
 
     private void OnMouseDown()
     {
