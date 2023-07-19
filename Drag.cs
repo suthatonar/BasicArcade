@@ -17,10 +17,7 @@ public class Drag : MonoBehaviour
         // Calculate the offset from the object's position to the mouse position when clicked
         zCoord = Camera.main.WorldToScreenPoint(transform.position).z;
         offset = transform.position - GetMouseWorldPos();
-
-        //Keep the starting position
-        //startposition = transform.position;
-
+        
         Cursor.visible = false;
 
         item.itemStatus = item.ItemStatus.Grabbed;
@@ -30,13 +27,12 @@ public class Drag : MonoBehaviour
     {
         // Update the object's position based on the mouse movement
         Vector3 newPos = GetMouseWorldPos() + offset;
-        newPos.y = GameManager.instance.objectHeight; // กำหนดความสูงใหม่ให้กับแกน y
+        newPos.y = GameManager.instance.objectHeight; // ยกร“รยนยดยครร’รรรยงรฃรรรจรฃรรฉยกร‘ยบรกยกยน y
         transform.position = newPos;
     }
 
     private void OnMouseUp()
     {
-        //transform.position = startposition;
         Cursor.visible = true;
 
         item.itemStatus = item.ItemStatus.None;
