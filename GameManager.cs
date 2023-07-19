@@ -22,9 +22,6 @@ public class GameManager : MonoBehaviour
     [Tooltip("Set Recipe")]
     public List<Recipe> RecipeList = new List<Recipe>();
 
-    [Header("Bucket")]
-    [SerializeField] Bucket bucket;
-
     [Header("Mouse Drag")]
     [Tooltip("height from the floor")]
     public float objectHeight;
