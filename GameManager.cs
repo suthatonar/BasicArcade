@@ -61,10 +61,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(AlertStatus(Color.green, "Mix successfully!, move on"));
     }
 
-    public void WrongRecipe()
-    {
-        StartCoroutine(AlertStatus(Color.red,"Wrong Recipe!"));
-    }
+    public void WrongRecipe() => StartCoroutine(AlertStatus(Color.red,"Wrong Recipe!"));
 
     IEnumerator AlertStatus(Color color,string text)
     {
