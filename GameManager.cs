@@ -41,17 +41,11 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     // Start is called before the first frame update
-    void Start()
-    {
-        instance = this;
-    }
-
+    void Start() => instance = this;
+    
     // Update is called once per frame
-    void FixedUpdate()
-    {
-        Timer();
-    }
-
+    void FixedUpdate() => Timer();
+    
     public void StartButton()
     {
         RandomRecipe();
