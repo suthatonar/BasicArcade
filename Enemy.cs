@@ -11,10 +11,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] float vision_radius;
     [SerializeField] LayerMask TargetMask;
     // Start is called before the first frame update
-    void Start()
-    {
-        agent = GetComponent<NavMeshAgent>();
-    }
+    void Start() => agent = GetComponent<NavMeshAgent>();
 
     // Update is called once per frame
     void Update()
