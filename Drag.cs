@@ -27,7 +27,7 @@ public class Drag : MonoBehaviour
     {
         // Update the object's position based on the mouse movement
         Vector3 newPos = GetMouseWorldPos() + offset;
-        newPos.y = GameManager.instance.objectHeight; // ¡ÓË¹´¤ÇÒÁÊÙ§ãËÁèãËé¡Ñºá¡¹ y
+        newPos.y = GameManager.instance.objectHeight;
         transform.position = newPos;
     }
 
