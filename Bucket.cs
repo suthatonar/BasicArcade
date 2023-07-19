@@ -12,22 +12,22 @@ public class Bucket : MonoBehaviour
     {
         bool complete = true;
 
-        int[] formulaCurrent = new int[Enum.GetNames(typeof(item.itemType)).Length];
-        int[] MainFomula = new int[Enum.GetNames(typeof(item.itemType)).Length];
+        int[] RecipeCurrent = new int[Enum.GetNames(typeof(item.itemType)).Length];
+        int[] MainRecipe = new int[Enum.GetNames(typeof(item.itemType)).Length];
 
         foreach (GameObject item in BucketItem)
         {
-            formulaCurrent[(int)item.GetComponent<item>().item_Type]++;
+            RecipeCurrent[(int)item.GetComponent<item>().item_Type]++;
         }
 
         foreach (item.itemType type in GameManager.instance.mainRecipe.type)
         {
-            MainFomula[(int)type]++;
+            MainRecipe[(int)type]++;
         }
 
-        for(int i = 0; i < MainFomula.Length; i++)
+        for(int i = 0; i < MainRecipe.Length; i++)
         {
-            if (formulaCurrent[i] != MainFomula[i])
+            if (RecipeCurrent[i] != MainRecipe[i])
             {
                 complete = false;
                 break;
