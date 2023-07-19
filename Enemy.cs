@@ -14,11 +14,8 @@ public class Enemy : MonoBehaviour
     void Start() => agent = GetComponent<NavMeshAgent>();
 
     // Update is called once per frame
-    void Update()
-    {
-        Patroll();
-    }
-
+    void Update() => Patroll();
+    
     void Patroll()
     {
         if (!GameManager.instance.GameStart) return;
