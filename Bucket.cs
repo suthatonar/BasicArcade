@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class Bucket : MonoBehaviour
 {
-    //[HideInInspector]
-    public List<GameObject> BucketItem = new List<GameObject>();
+    List<GameObject> BucketItem = new List<GameObject>();
 
     bool CompleteRecipe()
     {
@@ -25,7 +24,7 @@ public class Bucket : MonoBehaviour
             MainRecipe[(int)type]++;
         }
 
-        for(int i = 0; i < MainRecipe.Length; i++)
+        for (int i = 0; i < MainRecipe.Length; i++)
         {
             if (RecipeCurrent[i] != MainRecipe[i])
             {
@@ -52,7 +51,7 @@ public class Bucket : MonoBehaviour
     {
         if (!other.GetComponent<item>()) return;
 
-        if(other.GetComponent<item>().type == item.ObjectType.Item)
+        if (other.GetComponent<item>().type == item.ObjectType.Item)
         {
             BucketItem.Add(other.gameObject);
 
