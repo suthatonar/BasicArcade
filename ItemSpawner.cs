@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,7 +11,7 @@ public class ItemSpawner : MonoBehaviour
     List<GameObject> itemList = new List<GameObject>();
 
     [Range(-100, 100)]
-    [SerializeField] float minX,maxX,minZ,maxZ;
+    [SerializeField] float minX, maxX, minZ, maxZ;
 
     public static ItemSpawner Instance;
 
@@ -27,19 +26,19 @@ public class ItemSpawner : MonoBehaviour
     {
         foreach (GameObject item in itemList)
             itemList.Remove(item);
-            
+
         itemList.Clear();
     }
 
     void Spawner()
     {
-            for(int i = itemList.Count; itemList.Count < itemSpawnTotal; i++)
-            {
-                int randItem = Random.Range(0, itemPrefabList.Length);
-                GameObject item = Instantiate(itemPrefabList[randItem], itemSpawnPos(), Quaternion.identity);
-                item.transform.SetParent(itemContentParent);
-                itemList.Add(item);
-            }
+        for (int i = itemList.Count; itemList.Count < itemSpawnTotal; i++)
+        {
+            int randItem = Random.Range(0, itemPrefabList.Length);
+            GameObject item = Instantiate(itemPrefabList[randItem], itemSpawnPos(), Quaternion.identity);
+            item.transform.SetParent(itemContentParent);
+            itemList.Add(item);
+        }
     }
 
     Vector3 itemSpawnPos()
